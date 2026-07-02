@@ -27,7 +27,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function layer = CreateLayer(name, top, bottom, gamma, E, nu)
+function layer = gf_CreateLayer(name, top, bottom, gamma, E, nu)
 
     layer.name = name;
     layer.top = top;
