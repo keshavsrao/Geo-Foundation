@@ -3,19 +3,17 @@
 % GeoFoundation
 %
 % Function:
-%   gf_CreateLoad
+%   gf_BoussinesqPointLoad
 %
 % Description:
-%   Creates a load structure.
+%   Calculates vertical stress due to a surface point load.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function load = gf_CreateLoad(type,magnitude)
+function sigma_z = gf_BoussinesqPointLoad(P,r,z)
 
-    load.type = type;
-    load.magnitude = magnitude;
+R = sqrt(r^2 + z^2);
 
-    load.version = "0.1.0";
-    load.units = "kPa";
+sigma_z = (3*P*z^3) / (2*pi*R^5);
 
 end
