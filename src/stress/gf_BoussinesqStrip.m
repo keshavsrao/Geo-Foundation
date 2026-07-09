@@ -1,21 +1,27 @@
-function sigma = gf_BoussinesqStrip(q,B,z)
+% Function:
+%   gf_BoussinesqStrip
+%
+% Description:
+%   Calculates the vertical stress beneath the centreline of an infinitely
+%   long strip footing subjected to a uniformly distributed pressure.
+%
+% Inputs:
+%   q - Uniform pressure (kPa)
+%   B - Footing width (m)
+%   z - Depth below footing base (m)
+%
+% Output:
+%   sigma_z - Vertical stress (kPa)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function sigma_z = gf_BoussinesqStrip(q,B,z)
 
-n = 500;
-
-dx = B/n;
-
-sigma = 0;
-
-for i = 1:n
-
-    x = -B/2 + (i-0.5)*dx;
-
-    R = sqrt(x^2 + z^2);
-
-    dSigma = (2*q*z^3)/(pi*R^4);
-
-    sigma = sigma + dSigma*dx;
-
+if z <= 0
+    error('Depth must be greater than zero.');
 end
+
+m = B/(2*z);
+
+sigma_z = (2*q/pi) * (atan(m) + m/(1+m^2));
 
 end
